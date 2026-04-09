@@ -4,10 +4,23 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
-import { Minus, Plus, X, ShoppingBag, ArrowRight } from "lucide-react";
+import { Minus, Plus, X, ShoppingBag, ArrowRight, MessageCircle } from "lucide-react";
 
 export default function CartPage() {
   const { cart, updateQuantity, removeFromCart, cartTotal } = useCart();
+
+  const handleWhatsAppOrder = () => {
+    if (cart.length === 0) return;
+    
+    let message = "Hi Mahi Sports Hub, I would like to order the following items:\n\n";
+    cart.forEach((item, index) => {
+      message += `${index + 1}. ${item.name} - Qty: ${item.quantity} (₹${(item.price * item.quantity).toLocaleString('en-IN')})\n`;
+    });
+    message += `\nTotal: ₹${cartTotal.toLocaleString('en-IN')}\n\nPlease let me know the next steps.`;
+    
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/918382908844?text=${encodedMessage}`, '_blank');
+  };
 
   if (cart.length === 0) {
     return (
@@ -129,12 +142,22 @@ export default function CartPage() {
                 </div>
               </div>
 
-              <Link
-                href="/checkout"
-                className="w-full flex items-center justify-center gap-2 bg-black text-white py-4 font-bold text-lg hover:bg-gray-800 transition-colors rounded-lg"
-              >
-                Proceed to Checkout <ArrowRight className="w-5 h-5" />
-              </Link>
+              <div className="flex flex-col gap-3">
+                <Link
+                  href="/checkout"
+                  className="w-full flex items-center justify-center gap-2 bg-black text-white py-4 font-bold text-lg hover:bg-gray-800 transition-colors rounded-lg"
+                >
+                  Proceed to Checkout <ArrowRight className="w-5 h-5" />
+                </Link>
+
+                <button
+                  onClick={handleWhatsAppOrder}
+                  className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white py-4 font-bold text-lg hover:bg-[#128C7E] transition-colors rounded-lg"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Order all on WhatsApp
+                </button>
+              </div>
               
               <div className="mt-4 text-center">
                 <Link href="/products" className="text-sm font-medium text-gray-500 hover:text-black hover:underline">
