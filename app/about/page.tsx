@@ -31,13 +31,13 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-bold font-heading mb-6">Our Story</h2>
             <div className="space-y-6 text-lg text-gray-600">
               <p>
-                Founded by <strong className="text-black">Ankur Srivastava</strong>, Mahi Sports Hub was born out of a deep passion for sports and a desire to provide the local community with high-quality equipment at affordable prices.
+                Founded by <strong className="text-black">Ankur Srivastava</strong>, Mahi Sports Hub began with a singular vision: to elevate the game of every cricketer in Indira Nagar and beyond. Located near the Hanuman Mandir, we have spent the last 5 years evolving from a local retail store into a specialized startup for premium cricket gear and customized team wear.
               </p>
               <p>
                 Located in the heart of Indira Nagar, near Hanuman Mandir, we have grown over the past 5 years to become the go-to destination for athletes, fitness enthusiasts, and beginners alike.
               </p>
               <p>
-                We believe that everyone should have access to the right gear to pursue their sporting dreams. That&apos;s why we carefully curate our inventory, ensuring we offer only authentic products from trusted brands.
+                We believe that everyone should have access to the right gear to pursue their sporting dreams. That&apos;s why we carefully curate our inventory, ensuring we offer only authentic products from trusted brands. We realized that athletes don&apos;t just want off-the-shelf equipment; they want gear that represents their identity. That is why we transitioned our focus exclusively to high-end cricket equipment and fully customizable apparel. Whether you need a Grade 1 English Willow bat, custom-printed team jerseys for your next tournament, or specialized sports socks, we engineer our inventory to make you look and play like a professional. At Mahi Sports Hub, you don&apos;t just buy gear—you build your legacy.
               </p>
             </div>
 

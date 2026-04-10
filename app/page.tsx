@@ -24,21 +24,21 @@ export default function Home() {
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-6">
+          <div className="max-w-3xl text-center md:text-left flex flex-col items-center md:items-start">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
               <Star className="w-4 h-4 text-neon-green fill-neon-green" />
-              <span className="text-sm font-medium tracking-wide">4.8★ Rated by 100+ Athletes</span>
+              <span className="text-sm font-medium tracking-wide text-gray-200">4.8★ Rated by 100+ Athletes</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold font-heading tracking-tight mb-6 leading-tight">
-              Premium Sports Gear in <span className="text-neon-green">Indira Nagar</span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-heading tracking-tight mb-6 leading-tight">
+              Premium Cricket Gear & Custom Jerseys For <span className="text-neon-green">All of India</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-xl">
-              Your trusted local destination for authentic cricket bats, fitness equipment, and premium sports accessories.
+            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl">
+              Equipping athletes nationwide with Grade 1 English Willow, custom team apparel, and professional gear. Delivered to your doorstep or available at our retail branches across India.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 w-full sm:w-auto">
               <Link
                 href="/products"
-                className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-black bg-neon-green hover:bg-white transition-colors"
+                className="inline-flex items-center justify-center px-8 py-4 w-full sm:w-auto text-base font-bold text-black bg-neon-green hover:bg-[#2ce60f] transition-colors rounded-lg"
               >
                 Shop Now
               </Link>
@@ -46,7 +46,7 @@ export default function Home() {
                 href="https://wa.me/918382908844"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-transparent border-2 border-white hover:bg-white hover:text-black transition-colors"
+                className="inline-flex items-center justify-center px-8 py-4 w-full sm:w-auto text-base font-bold text-white bg-transparent border-2 border-white hover:bg-white hover:text-black transition-colors rounded-lg"
               >
                 Chat on WhatsApp
               </a>
@@ -97,21 +97,27 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {categories.map((category, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { name: "Cricket Bats", image: "/cat-bat.jpg" },
+              { name: "Cricket Gear", image: "/cat-gear.jpg" },
+              { name: "Custom Jerseys", image: "/cat-jersey.jpg" },
+              { name: "Custom Hats & Bags", image: "/cat-bags.jpg" },
+            ].map((cat) => (
               <Link
-                key={category}
-                href={`/products?category=${encodeURIComponent(category)}`}
-                className="group relative h-40 rounded-xl overflow-hidden bg-black flex items-center justify-center"
+                key={cat.name}
+                href={`/products?category=${encodeURIComponent(cat.name)}`}
+                className="group relative h-64 rounded-xl overflow-hidden bg-black flex items-center justify-center"
               >
                 <Image
-                  src={`https://picsum.photos/seed/cat${index}/400/400`}
-                  alt={category}
+                  src={cat.image}
+                  alt={cat.name}
                   fill
-                  className="object-cover opacity-50 group-hover:opacity-40 transition-opacity duration-300"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <span className="relative z-10 text-white font-bold text-center px-2 group-hover:scale-110 transition-transform duration-300">
-                  {category}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10 transition-colors duration-300" />
+                <span className="relative z-10 text-white font-bold text-2xl text-center px-4 tracking-wide">
+                  {cat.name}
                 </span>
               </Link>
             ))}

@@ -8,12 +8,30 @@ import ProductCard from "@/components/ProductCard";
 function ProductsContent() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get("category");
+  const initialQuery = searchParams.get("q");
   
   const [selectedCategory, setSelectedCategory] = useState<string | null>(initialCategory);
+  const [searchQuery, setSearchQuery] = useState<string | null>(initialQuery);
 
-  const filteredProducts = selectedCategory
-    ? products.filter((p) => p.category === selectedCategory)
-    : products;
+  // Update state if URL params change
+  React.useEffect(() => {
+    setSelectedCategory(searchParams.get("category"));
+    setSearchQuery(searchParams.get("q"));
+  }, [searchParams]);
+
+  const filteredProducts = products.filter((p) => {
+    const matchesCategory = selectedCategory ? p.category === selectedCategory : true;
+    
+    let matchesSearch = true;
+    if (searchQuery) {
+      const searchTerms = searchQuery.trim().toLowerCase().split(/\s+/);
+      const name = p.name.toLowerCase();
+      const category = p.category.toLowerCase();
+      matchesSearch = searchTerms.every(term => name.includes(term) || category.includes(term));
+    }
+
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -57,7 +75,9 @@ function ProductsContent() {
         <div className="flex-1">
           <div className="mb-8">
             <h1 className="text-3xl font-bold font-heading mb-2">
-              {selectedCategory ? selectedCategory : "All Products"}
+              {searchQuery 
+                ? `Search Results for "${searchQuery}"` 
+                : selectedCategory ? selectedCategory : "All Products"}
             </h1>
             <p className="text-gray-500">
               Showing {filteredProducts.length} result{filteredProducts.length !== 1 ? 's' : ''}
@@ -72,12 +92,15 @@ function ProductsContent() {
             </div>
           ) : (
             <div className="text-center py-20 bg-gray-50 rounded-xl border border-gray-200">
-              <p className="text-xl text-gray-500 font-medium">No products found in this category.</p>
+              <p className="text-xl text-gray-500 font-medium">No products found.</p>
               <button 
-                onClick={() => setSelectedCategory(null)}
+                onClick={() => {
+                  setSelectedCategory(null);
+                  setSearchQuery(null);
+                }}
                 className="mt-4 text-neon-green font-bold hover:underline"
               >
-                View all products
+                Clear filters and view all products
               </button>
             </div>
           )}

@@ -2,8 +2,10 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ShoppingCart, Menu, X, Phone } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import SearchBar from "./SearchBar";
 
 export default function Navbar() {
   const { cartCount, setIsCartOpen } = useCart();
@@ -18,12 +20,17 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-40 w-full bg-black text-white border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-16 gap-4">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="font-bold text-2xl tracking-tighter flex items-center gap-2">
-              <span className="text-neon-green">MAHI</span>
-              <span>SPORTS</span>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/logo.png"
+                alt="Mahi Sports Hub Logo"
+                width={100}
+                height={40}
+                className="object-contain hover:opacity-80 transition-opacity"
+              />
             </Link>
           </div>
 
@@ -33,18 +40,23 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-gray-300 hover:text-neon-green transition-colors font-medium"
+                className="text-gray-300 hover:text-neon-green transition-colors font-medium whitespace-nowrap"
               >
                 {link.name}
               </Link>
             ))}
           </div>
 
+          {/* Search Bar (Desktop) */}
+          <div className="hidden md:flex flex-1 max-w-md ml-4">
+            <SearchBar />
+          </div>
+
           {/* Right side icons */}
           <div className="flex items-center space-x-4">
             <a 
               href="tel:+918382908844" 
-              className="hidden md:flex items-center gap-2 text-sm font-medium text-gray-300 hover:text-neon-green transition-colors"
+              className="hidden lg:flex items-center gap-2 text-sm font-medium text-gray-300 hover:text-neon-green transition-colors whitespace-nowrap"
             >
               <Phone className="w-4 h-4" />
               <span>+91 83829 08844</span>
@@ -79,6 +91,9 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-gray-900 border-b border-gray-800">
+          <div className="px-4 py-3 border-b border-gray-800">
+            <SearchBar />
+          </div>
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link) => (
               <Link

@@ -17,10 +17,20 @@ export default function Footer() {
               Premium sports gear and equipment in Indira Nagar, Lucknow. Trusted by local athletes and fitness enthusiasts.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-neon-green transition-colors">
+              <a 
+                href="https://www.instagram.com/mshcricketofficial/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-400 hover:text-neon-green transition-colors"
+              >
                 <Instagram className="w-6 h-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-neon-green transition-colors">
+              <a 
+                href="https://www.facebook.com/105935738173710" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-400 hover:text-neon-green transition-colors"
+              >
                 <Facebook className="w-6 h-6" />
               </a>
             </div>
