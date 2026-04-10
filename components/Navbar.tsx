@@ -30,7 +30,6 @@ export default function Navbar() {
                 width={100}
                 height={40}
                 className="object-contain hover:opacity-80 transition-opacity"
-                priority
               />
             </Link>
           </div>
