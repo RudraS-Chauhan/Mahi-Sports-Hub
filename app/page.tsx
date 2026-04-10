@@ -3,6 +3,8 @@ import { Star, ShieldCheck, MapPin, TrendingUp, ArrowRight } from "lucide-react"
 import { products, categories } from "@/data/products";
 import { reviews } from "@/data/reviews";
 import ProductCard from "@/components/ProductCard";
+import HotSellers from "@/components/HotSellers";
+import CategoryGrid from "@/components/CategoryGrid";
 
 export default function Home() {
   const bestSellers = products.filter(p => p.isBestSeller).slice(0, 4);
@@ -52,6 +54,8 @@ export default function Home() {
         </div>
       </section>
 
+      <HotSellers />
+
       {/* Trust Bar */}
       <section className="bg-neon-green text-black py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -81,45 +85,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Categories */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-end mb-10">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold font-heading mb-2">Shop by Category</h2>
-              <p className="text-gray-600">Find exactly what you need for your game.</p>
-            </div>
-            <Link href="/products" className="hidden md:flex items-center gap-2 font-bold hover:text-neon-green transition-colors">
-              View All <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { name: "Cricket Bats", image: "/cat-bat.jpg" },
-              { name: "Cricket Gear", image: "/cat-gear.jpg" },
-              { name: "Custom Jerseys", image: "/cat-jersey.jpg" },
-              { name: "Custom Hats & Bags", image: "/cat-bags.jpg" },
-            ].map((cat) => (
-              <Link
-                key={cat.name}
-                href={`/products?category=${encodeURIComponent(cat.name)}`}
-                className="group relative h-64 rounded-xl overflow-hidden bg-black flex items-center justify-center"
-              >
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10 transition-colors duration-300" />
-                <span className="relative z-10 text-white font-bold text-2xl text-center px-4 tracking-wide">
-                  {cat.name}
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CategoryGrid />
 
       {/* Popular Products */}
       <section className="py-20">

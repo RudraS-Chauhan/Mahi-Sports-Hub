@@ -8,6 +8,7 @@ export interface Product {
   image: string;
   inStock: boolean;
   isBestSeller?: boolean;
+  isTrending?: boolean;
 }
 
 export const categories = [
@@ -28,6 +29,7 @@ export const products: Product[] = [
     image: "https://picsum.photos/seed/bat1/600/600",
     inStock: true,
     isBestSeller: true,
+    isTrending: true,
   },
   {
     id: "bat-2",
@@ -38,6 +40,7 @@ export const products: Product[] = [
     category: "Cricket Bats",
     image: "https://picsum.photos/seed/bat2/600/600",
     inStock: true,
+    isTrending: true,
   },
   {
     id: "bat-3",
@@ -58,6 +61,7 @@ export const products: Product[] = [
     image: "https://picsum.photos/seed/pad1/600/600",
     inStock: true,
     isBestSeller: true,
+    isTrending: true,
   },
   {
     id: "gear-2",
@@ -77,6 +81,7 @@ export const products: Product[] = [
     category: "Cricket Gear",
     image: "https://picsum.photos/seed/helmet1/600/600",
     inStock: true,
+    isTrending: true,
   },
   {
     id: "jersey-1",
@@ -87,6 +92,7 @@ export const products: Product[] = [
     image: "https://picsum.photos/seed/jersey1/600/600",
     inStock: true,
     isBestSeller: true,
+    isTrending: true,
   },
   {
     id: "jersey-2",
