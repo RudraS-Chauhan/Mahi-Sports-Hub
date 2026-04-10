@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Star, ShieldCheck, MapPin, TrendingUp, ArrowRight } from "lucide-react";
 import { products, categories } from "@/data/products";
@@ -13,12 +12,10 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative bg-black text-white overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-40">
-          <Image
+          <img
             src="https://picsum.photos/seed/sportshero/1920/1080"
             alt="Sports Equipment"
-            fill
-            className="object-cover"
-            priority
+            className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
         </div>
@@ -109,11 +106,10 @@ export default function Home() {
                 href={`/products?category=${encodeURIComponent(cat.name)}`}
                 className="group relative h-64 rounded-xl overflow-hidden bg-black flex items-center justify-center"
               >
-                <Image
+                <img
                   src={cat.image}
                   alt={cat.name}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10 transition-colors duration-300" />
                 <span className="relative z-10 text-white font-bold text-2xl text-center px-4 tracking-wide">
