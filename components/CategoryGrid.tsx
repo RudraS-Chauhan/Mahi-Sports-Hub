@@ -23,26 +23,26 @@ export default function CategoryGrid() {
           </Link>
         </div>
 
-        <div className="flex flex-col gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {categoriesData.map((cat) => (
             <Link
               key={cat.name}
               href={`/products?category=${encodeURIComponent(cat.name)}`}
-              className="group relative w-full h-[250px] md:h-[400px] overflow-hidden bg-black flex flex-col items-center justify-end pb-8"
+              className="group relative w-full h-[300px] md:h-[450px] overflow-hidden bg-black flex flex-col items-center justify-center"
             >
               <img
                 src={cat.image}
                 alt={cat.name}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-colors duration-300 group-hover:from-black/90" />
-              <div className="relative z-10 text-center">
-                <h3 className="text-white font-bold text-3xl md:text-5xl uppercase tracking-wider mb-2">
+              <div className="absolute inset-0 bg-black/50 transition-colors duration-300 group-hover:bg-black/60" />
+              <div className="relative z-10 text-center flex flex-col items-center">
+                <h3 className="text-white font-extrabold text-3xl md:text-4xl uppercase tracking-wide">
                   {cat.name}
                 </h3>
-                <span className="text-white text-sm md:text-base font-medium tracking-widest uppercase opacity-90 group-hover:text-neon-green transition-colors">
-                  Shop Now -&gt;
-                </span>
+                <div className="mt-4 border-2 border-white text-white uppercase tracking-widest text-sm py-2 px-6 transition-colors duration-300 group-hover:bg-white group-hover:text-black">
+                  Shop Now
+                </div>
               </div>
             </Link>
           ))}

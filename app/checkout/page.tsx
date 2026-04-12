@@ -41,15 +41,25 @@ export default function CheckoutPage() {
     if (cart.length === 0) return;
     if (formRef.current && !formRef.current.reportValidity()) return;
 
+    // Sanitize inputs
+    const sanitizedName = formData.name.replace(/[<>]/g, '').trim().substring(0, 100);
+    const sanitizedPhone = formData.phone.replace(/[^\d+-\s]/g, '').trim().substring(0, 20);
+    const sanitizedAddress = formData.address.replace(/[<>]/g, '').trim().substring(0, 500);
+
+    if (!sanitizedName || !sanitizedAddress) {
+      alert("Please provide valid name and address.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     let message = `New Order from Mahi Sports Hub!\n\n`;
     message += `Customer Details:\n`;
-    message += `Name: ${formData.name}\n`;
-    if (formData.phone) {
-      message += `Phone: ${formData.phone}\n`;
+    message += `Name: ${sanitizedName}\n`;
+    if (sanitizedPhone) {
+      message += `Phone: ${sanitizedPhone}\n`;
     }
-    message += `Address/Pickup: ${formData.address}\n\n`;
+    message += `Address/Pickup: ${sanitizedAddress}\n\n`;
 
     message += `Order Summary:\n`;
     cart.forEach((item) => {
