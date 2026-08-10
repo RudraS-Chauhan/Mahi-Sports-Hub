@@ -1,0 +1,8 @@
+{
+  "name": "Mahi Sports Hub",
+  "description": "Premium Sports Gear in Indira Nagar, Lucknow",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
